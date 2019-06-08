@@ -7,5 +7,17 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <h1>Login</h1>
+    <h2><%= message %></h2>
+    <form method="post" action="/login">
+      <p>
+        name：<input type="text" id="username" name="username" /><br/>
+        password：<input type="password" id="password" name="password" />
+      </p>
+      <input type="submit" value="Login">
+    </form>
+    <form method="get" action="/signup">
+      <input type="submit" value="sign up">
+    </form>
   </body>
 </html>
