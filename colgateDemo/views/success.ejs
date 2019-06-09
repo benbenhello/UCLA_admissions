@@ -5,9 +5,18 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Do you want to study in UCLA one of the best university in the world !! Let's do it</h1>
-    <h1>key in your score and we will help you knowing the chance you can get in UCLA</h1>
-    
+  	<h1><%= name %></h1>
+    <h2>Do you want to study in UCLA one of the best university in the world !! Let's do it</h2>
+    <h2>key in your information and we will help you knowing the chance you can get in UCLA</h2>
+    <form method="post" action="/result">
+      <p>
+        GRE Score : <input type="text" id="GRE_Score" name="GRE_Score" /><br/>
+        TOEFL Score : <input type="text" id="TOEFL_Score" name="TOEFL_Score" /><br/>
+        CGPA : <input type="text" id="CGPA" name="CGPA" /><br/>
+        Research : <input type="text" id="Research" name="Research" /><br/>
+      </p>
+      <input type="submit" value="submit">
+    </form>
   </body>
 </html>
 
