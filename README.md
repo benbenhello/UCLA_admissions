@@ -5,9 +5,11 @@ nccucs 1072 data science final project
 ==================================================================
 
 requirement
+
 local mongodb setup on port 27017
 
 ==================================================================
 
 usage
+
 localhost:3000
