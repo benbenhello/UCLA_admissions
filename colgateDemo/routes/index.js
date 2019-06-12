@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
 var MongoClient = require('mongodb').MongoClient;
-
+var exec = require('child_process').exec;
 
 
 /* GET home page. */
@@ -11,19 +10,32 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/signup', function(req, res, next) {
-  res.render('create_account');
+  res.render('create_account', {message: ''});
 });
 
 router.get('/home', function(req, res, next) {
-  res.render('success', { title: 'success' ,name: ''});
+  res.render('login_success', { title: 'success' ,name: req.session.name});
 });
 
 router.post('/result', function(req, res, next) {
   var gre = req.body.GRE_Score;
   var toefl = req.body.TOEFL_Score;
+  var university = req.body.University_Rating;
+  var sop = req.body.SOP;
+  var lor = req.body.LOR
   var cgpa = req.body.CGPA;
   var research = req.body.Research;
-  res.render('result', { title: 'colgate hi' ,name: 'test' ,GRE: gre ,TOEFL: toefl ,CGPA: cgpa ,RESEARCH: research});
+  var arg1 = 'asd';
+  var arg2 = 'zxc';
+  var filename = '/Users/sam/Desktop/UCLA_admissions/colgateDemo/script/test.py'
+  exec('python'+' '+filename+' '+arg1+' '+arg2,function(err,stdout,stderr){              
+	if(stdout){
+	    console.log("py success", stdout);
+	    res.render('result', { title: 'colgate hi' ,name: req.session.name ,GRE: gre ,TOEFL: toefl ,University_Rating: university ,SOP: sop ,LOR: lor ,CGPA: cgpa ,RESEARCH: research ,admission: stdout});
+	} 
+	    if(err){console.log("py fail", err);}
+	});
+  
 });
 
 router.post('/create', function(req, res, next) {
@@ -35,10 +47,22 @@ router.post('/create', function(req, res, next) {
         const mydb = db.db('testDB');
         mydb.collection('Persons', function(err, collection) {
             collection.insertOne({ Name: account, Password: password });
+
             collection.count(function(err, count) {
                 if (err) throw err;
                 console.log('Total Rows:' + count);
             });
+            // collection.find({ Name: account }).toArray(function(err, items) {
+            //     if (items.length === 0){
+            //       collection.insertOne({ Name: account, Password: password });
+            //       res.render('index', { title: 'colgate hi', message: '' });
+            //     }
+            //     else {
+            //       res.render('create_account', {message: 'this account name has been used'});
+            //     }
+            //     console.log(items.length)
+            // });
+            
         });
 
         db.close();
@@ -58,7 +82,10 @@ router.post('/login', function(req, res, next) {
         mydb.collection("Persons", function(err, collection) {
             collection.find({ Name: account , Password: password}).toArray(function(err, items) {
                 if (items.length === 0) res.render('index',{title: 'colgate hi', message: 'your account is not exist or your password is incorrect'});
-                else res.render('success', { title: 'success' ,name: account});
+                else {
+                	req.session.name = account;
+                	res.render('login_success', { title: 'success' ,name: account});
+                }
                 console.log(items.length)
             });
         });

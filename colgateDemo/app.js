@@ -1,5 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
+var session = require('express-session');
+var MongoDBStore = require('connect-mongo')(session);
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -9,6 +12,11 @@ var usersRouter = require('./routes/users');
 // var resultRouter = require('./routes/result.js');
 
 var app = express();
+
+app.use(session({
+	secret: "colgate",
+	store: new MongoDBStore({url: "mongodb://localhost:27017"}),
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
