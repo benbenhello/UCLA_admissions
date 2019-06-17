@@ -18,17 +18,31 @@ router.get('/home', function(req, res, next) {
 });
 
 router.post('/result', function(req, res, next) {
-  var gre = req.body.GRE_Score;
-  var toefl = req.body.TOEFL_Score;
-  var university = req.body.University_Rating;
-  var sop = req.body.SOP;
-  var lor = req.body.LOR
-  var cgpa = req.body.CGPA;
-  var research = req.body.Research;
-  var arg1 = 'asd';
-  var arg2 = 'zxc';
-  var filename = '/Users/sam/Desktop/UCLA_admissions/colgateDemo/script/test.py'
-  exec('python'+' '+filename+' '+arg1+' '+arg2,function(err,stdout,stderr){              
+  if(req.body.GRE_Score) gre = req.body.GRE_Score 
+  else gre = ' '
+  if(req.body.TOEFL_Score) toefl = req.body.TOEFL_Score 
+  else toefl = ' '
+  if(req.body.University_Rating) university = req.body.University_Rating 
+  else university = ' '
+  if(req.body.SOP) sop = req.body.SOP 
+  else sop = ' '
+  if(req.body.LOR) lor = req.body.LOR 
+  else lor = ' '
+  if(req.body.CGPA) cgpa = req.body.CGPA 
+  else cgpa = ' '
+  if(req.body.Research) research = req.body.Research 
+  else research = ' ' 
+  // var toefl = req.body.TOEFL_Score;
+  // var university = req.body.University_Rating;
+  // var sop = req.body.SOP;
+  // var lor = req.body.LOR
+  // var cgpa = req.body.CGPA;
+  // var research = req.body.Research;
+  // if(req.body.GRE_Score) ? req.body.GRE_Score : ' '
+  // console.log(gre)
+  var filename = '/Users/sam/Desktop/UCLA_admissions/colgateDemo/script/model.py'
+  exec('python3'+' '+filename+' '+gre+' '+toefl+' '+university+' '+sop+' '+lor+' '+cgpa+' '+research,function(err,stdout,stderr){  
+  // exec('python'+' '+filename+' '+arg1+' '+arg2,function(err,stdout,stderr){             
 	if(stdout){
 	    console.log("py success", stdout);
 	    res.render('result', { title: 'colgate hi' ,name: req.session.name ,GRE: gre ,TOEFL: toefl ,University_Rating: university ,SOP: sop ,LOR: lor ,CGPA: cgpa ,RESEARCH: research ,admission: stdout});
