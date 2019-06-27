@@ -19,3 +19,9 @@ form {
 	/*padding bottom: 0;*/
 	background: rgba(255,255,255,0.8); 
 }
+
+input{
+    
+    caret-color: #FF1744; /* 指定色 */
+    outline: none; /* 外框效果 */
+}

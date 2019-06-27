@@ -1,10 +1,10 @@
 body {
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: url('/images/background3.jpg');
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  background:  url('/images/background3.jpg');
+  background-position: center;  /* Center the image */
+  background-repeat: no-repeat ; /* Do not repeat the image */
+  background-size: cover ; /* Resize the background image to cover the entire container */
   height: 70vh;
   
 }
@@ -14,4 +14,11 @@ form {
 	padding: 15px 1em;
 	padding bottom: 0;
 	background: rgba(255,255,255,0.8); 
+  
+}
+
+img{
+  position: relative;
+  left: 1000px;
+  top: 5px;
 }

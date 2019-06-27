@@ -19,19 +19,19 @@ router.get('/home', function(req, res, next) {
 
 router.post('/result', function(req, res, next) {
   if(req.body.GRE_Score) gre = req.body.GRE_Score 
-  else gre = ' '
+  else gre = '-1'
   if(req.body.TOEFL_Score) toefl = req.body.TOEFL_Score 
-  else toefl = ' '
+  else toefl = '-1'
   if(req.body.University_Rating) university = req.body.University_Rating 
-  else university = ' '
+  else university = '-1'
   if(req.body.SOP) sop = req.body.SOP 
-  else sop = ' '
+  else sop = '-1'
   if(req.body.LOR) lor = req.body.LOR 
-  else lor = ' '
+  else lor = '-1'
   if(req.body.CGPA) cgpa = req.body.CGPA 
-  else cgpa = ' '
+  else cgpa = '-1'
   if(req.body.Research) research = req.body.Research 
-  else research = ' ' 
+  else research = '-1' 
   // var toefl = req.body.TOEFL_Score;
   // var university = req.body.University_Rating;
   // var sop = req.body.SOP;
