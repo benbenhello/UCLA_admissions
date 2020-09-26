@@ -19,7 +19,7 @@ def benben(gre = 316.47, toelf = 107.19, university = 3, sop = 3.37, lor = 3.48,
     
   	return np.array([[gre,toelf,university,sop,lor,cgpa,research]])
 
-raw_data = pd.read_csv("/Users/sam/Desktop/UCLA_admissions/colgateDemo/script/Admission_Predict_Ver1.1.csv")
+raw_data = pd.read_csv("/Users/ben/Desktop/UCLA_admissions/colgateDemo/script/Admission_Predict_Ver1.1.csv")
 raw_data.set_index('Serial No.', inplace=True)
 raw_data.index.name = "No"
 raw_data = raw_data.rename(columns = {'Chance of Admit ': 'Chance', \

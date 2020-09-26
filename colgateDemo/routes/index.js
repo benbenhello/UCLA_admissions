@@ -40,7 +40,7 @@ router.post('/result', function(req, res, next) {
   // var research = req.body.Research;
   // if(req.body.GRE_Score) ? req.body.GRE_Score : ' '
   // console.log(gre)
-  var filename = '/Users/sam/Desktop/UCLA_admissions/colgateDemo/script/model.py'
+  var filename = '/Users/ben/Desktop/UCLA_admissions/colgateDemo/script/model.py'
   exec('python3'+' '+filename+' '+gre+' '+toefl+' '+university+' '+sop+' '+lor+' '+cgpa+' '+research,function(err,stdout,stderr){  
   // exec('python'+' '+filename+' '+arg1+' '+arg2,function(err,stdout,stderr){             
 	if(stdout){
